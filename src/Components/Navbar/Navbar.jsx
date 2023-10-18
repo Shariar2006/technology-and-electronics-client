@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
 
-    const navlink = <>
+    const navlink = <div className="lg:flex text-xl font-bold">
         <li><NavLink to={'/'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-3 py-2 " : "mx-2"}
         >Home</NavLink></li>
@@ -12,7 +12,7 @@ const Navbar = () => {
         <li><NavLink to={'/register'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-3 py-2 " : "mx-2"}
         >Register</NavLink></li>
-    </>
+    </div>
 
 
     return (
@@ -24,12 +24,12 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
 
-                        <ul tabIndex={0} className="menu-sm dropdown-content mt-3 z-[1] p-2  rounded-box w-52 font5">
+                        <ul tabIndex={0} className="bg-gray-300 menu-sm dropdown-content mt-3 z-[1] p-2  rounded-box w-52 font5">
                             {navlink}
                         </ul>
                     </div>
                     <div className="flex items-center text-xl font-bold">
-                    <img src="https://i.ibb.co/5YFTJBz/1.png" alt="" />
+                    <img className="hidden lg:block" src="https://i.ibb.co/5YFTJBz/1.png" alt="" />
                     <p> Tech <span className="text-blue-500">and</span> Elec</p>
                     </div>
                 </div>
