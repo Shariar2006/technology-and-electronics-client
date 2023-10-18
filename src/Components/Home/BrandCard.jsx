@@ -14,7 +14,7 @@ const BrandCard = () => {
                     </div>
                 </div>
             </Link>
-            <Link to='/Samsung'>
+            <Link to='/samsung'>
                 <div className="card h-[320px] w-96 bg-base-100 shadow-xl">
                     <figure><img src="https://images.samsung.com/is/image/samsung/assets/in/about-us/brand/logo/mo/360_197_1.png?$FB_TYPE_B_PNG$" alt="Samsung" /></figure>
                     <div className="card-body">
