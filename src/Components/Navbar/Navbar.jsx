@@ -4,7 +4,14 @@ import { AuthContext } from "../Context/AuthProvider";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
+    const handleLogout = ()=>{
+        logout()
+        .then(()=>{})
+        .catch((error) =>{
+            console.log(error)
+        })
+    }
 
     const navlink = <div className="lg:flex text-xl font-bold">
         <li><NavLink to={'/'}
@@ -45,7 +52,8 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ? <>
-                        <p>{user.displayName}</p>
+                        <p>{user.email}</p>
+                        <a onClick={handleLogout} href="" className="btn font5">Log Out</a>
                         </> : <p>N/A</p>
                     }
                 </div>
