@@ -3,14 +3,9 @@ import App from "../../App";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import Apple from "../BrandPage/Apple";
-import Samsung from "../BrandPage/Samsung";
-import Intel from "../BrandPage/Intel";
-import Google from "../BrandPage/Google";
-import Vivo from "../BrandPage/Vivo";
-import Sony from "../BrandPage/Sony";
 import AddProduct from "../AddProduct/AddProduct";
 import MyCard from "../MyCard/MyCard";
+import Product from "../Product/Product";
 
 
 const Router = createBrowserRouter([
@@ -20,7 +15,8 @@ const Router = createBrowserRouter([
       children:[
         {
             path: "/",
-            element: <Home></Home>
+            element: <Home></Home>,
+            loader: () => fetch('BrandCard.json')
         },
         {
             path: "/login",
@@ -39,29 +35,10 @@ const Router = createBrowserRouter([
             element: <MyCard></MyCard>
         },
         {
-            path: "/apple",
-            element: <Apple></Apple>
+            path: "/products/:brand",
+            element: <Product></Product>
         },
-        {
-            path: "/samsung",
-            element: <Samsung></Samsung>
-        },
-        {
-            path: "/intel",
-            element: <Intel></Intel>
-        },
-        {
-            path: "/google",
-            element: <Google></Google>
-        },
-        {
-            path: "/vivo",
-            element: <Vivo></Vivo>
-        },
-        {
-            path: "/sony",
-            element: <Sony></Sony>
-        }
+        
       ]
     },
   ]);
