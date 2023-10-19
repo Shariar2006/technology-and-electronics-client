@@ -9,6 +9,8 @@ import Intel from "../BrandPage/Intel";
 import Google from "../BrandPage/Google";
 import Vivo from "../BrandPage/Vivo";
 import Sony from "../BrandPage/Sony";
+import AddProduct from "../AddProduct/AddProduct";
+import MyCard from "../MyCard/MyCard";
 
 
 const Router = createBrowserRouter([
@@ -27,6 +29,14 @@ const Router = createBrowserRouter([
         {
             path: "/register",
             element: <Register></Register>
+        },
+        {
+            path: "/addProduct",
+            element: <AddProduct></AddProduct>
+        },
+        {
+            path: "/myCard",
+            element: <MyCard></MyCard>
         },
         {
             path: "/apple",

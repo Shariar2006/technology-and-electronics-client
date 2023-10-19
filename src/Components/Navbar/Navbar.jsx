@@ -5,23 +5,27 @@ import { AuthContext } from "../Context/AuthProvider";
 const Navbar = () => {
 
     const { user, logout } = useContext(AuthContext)
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         logout()
-        .then(()=>{})
-        .catch((error) =>{
-            console.log(error)
-        })
+            .then(() => { })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     const navlink = <div className="lg:flex text-xl font-bold">
         <li><NavLink to={'/'}
-            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-3 py-2 " : "mx-2"}
+            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-1 py-2 " : "mx-2"}
         >Home</NavLink></li>
-        <li><NavLink to={'/login'}
-            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-3 py-2 " : "mx-2"}
-        >Login</NavLink></li>
+        <li><NavLink to={'/addProduct'}
+            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-1 py-2 " : "mx-2"}
+        >Add Product</NavLink></li>
+        <li><NavLink to={'/myCard'}
+            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-1 py-2 " : "mx-2"}
+        >My Card</NavLink></li>
+
         <li><NavLink to={'/register'}
-            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-3 py-2 " : "mx-2"}
+            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-1 py-2 " : "mx-2"}
         >Register</NavLink></li>
     </div>
 
@@ -52,9 +56,15 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ? <>
-                        <p>{user.email}</p>
-                        <a onClick={handleLogout} href="" className="btn font5">Log Out</a>
-                        </> : <p>N/A</p>
+                            <p>{user.displayName}</p>
+                            <img className="rounded-full" src={user.photoURL} alt="" />
+                            <a onClick={handleLogout} href="" className="btn">Log Out</a>
+                        </> :
+                            <ul>
+                                <li className="text-xl font-bold"><NavLink to={'/login'}
+                                    className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-1 py-2 " : "mx-2"}
+                                >Login</NavLink></li>
+                            </ul>
                     }
                 </div>
             </div>

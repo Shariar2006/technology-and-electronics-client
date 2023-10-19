@@ -5,22 +5,27 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
 
-    const { userLogin, user } = useContext(AuthContext)
+    const { userLogin, user, singWithGoogle } = useContext(AuthContext)
     console.log(user)
 
     const handleLogin = (e) => {
         e.preventDefault()
-        const name = e.target.name.value
+        const displayName = e.target.name.value
         const email = e.target.email.value
         const password = e.target.password.value
-        console.log(name, email, password)
+        console.log(displayName, email, password)
         userLogin(email, password)
-        .then((result) => {
-            console.log(result.user)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+            .then((result) => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+    const googleLogin = () => {
+        singWithGoogle()
+            .then((result) => { console.log(result.user) })
+            .catch(error => { console.log(error) })
     }
 
     return (
@@ -57,6 +62,13 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                             <p>Don't have an account? <Link to='/register' className="text-blue-600 font-bold underline">Register</Link></p>
+                            <div className="text-center">
+                                <p>or</p>
+                                <button className="btn ">
+                                    <img onClick={googleLogin} className="h-10 pt-2  text-center" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c51f.png" alt="" />
+                                 </button>
+
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -8,11 +8,12 @@ const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        const email = e.target.email.value
-        const name = e.target.name.value
-        const password = e.target.password.value
-        const photo = e.target.photo.value
-        console.log(email, name, password, photo)
+        const form = new FormData(e.currentTarget)
+        const email = form.get('email')
+        const displayName = form.get('name')
+        const password = form.get('password')
+        const photoURL = form.get('photo')
+        console.log(email, displayName, password, photoURL)
         createUser(email, password)
             .then((result) => {
                 console.log(result.user)
@@ -58,7 +59,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text" name="photo" placeholder="password" className="input input-bordered" required />
+                                <input type="text" name="photo" placeholder="photo url" className="input input-bordered" required />
 
                             </div>
                             <div className="form-control mt-6">
