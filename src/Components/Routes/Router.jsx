@@ -6,6 +6,7 @@ import Register from "../Register/Register";
 import AddProduct from "../AddProduct/AddProduct";
 import MyCard from "../MyCard/MyCard";
 import Product from "../Product/Product";
+import SingleBrandsCards from "../SingleBrandsCards/SingleBrandsCards";
 
 
 const Router = createBrowserRouter([
@@ -37,6 +38,11 @@ const Router = createBrowserRouter([
             {
                 path: "/products/:brand",
                 element: <Product></Product>,
+                loader: () => fetch('http://localhost:5000/brand')
+            },
+            {
+                path: "/singleBrandsCards/:_id",
+                element: <SingleBrandsCards></SingleBrandsCards>,
                 loader: () => fetch('http://localhost:5000/brand')
             },
 

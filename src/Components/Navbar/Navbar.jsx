@@ -56,9 +56,9 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ? <div className="flex items-center gap-2">
-                            <p className="text-xl font-bold">{user.displayName}</p>
-                            <img className="rounded-full" src={user.photoURL} alt="" />
-                            <a onClick={handleLogout} href="" className="btn">Log Out</a>
+                            <p className="text-xs lg:text-xl  font-bold">{user.displayName}</p>
+                            <img className="rounded-full w-10" src={user.photoURL} alt="" />
+                            <a onClick={handleLogout} href="" className="cursor-pointer text-xs lg:text-xl">Log Out</a>
                         </div> :
                             <ul>
                                 <li className="text-xl font-bold"><NavLink to={'/login'}

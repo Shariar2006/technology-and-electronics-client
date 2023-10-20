@@ -42,11 +42,11 @@ const AddProduct = () => {
 
                 <div className="mx-auto">
                     <h1 className="text-white font-semibold">Product Name</h1>
-                    <input className="p-2 w-72 mt-2 rounded-md" type="text" placeholder="Product Name" name="name" id="" />
+                    <input className="p-2 w-72 mt-2 rounded-md" type="text" required placeholder="Product Name" name="name" id="" />
                 </div>
                 <div className="mx-auto">
                     <h1 className="text-white font-semibold">Brand Name</h1>
-                    <select className="p-2 w-72 mt-2 rounded-md" name="brand" id="">
+                    <select required className="p-2 w-72 mt-2 rounded-md" name="brand" id="">
                         {
                             brands.map(brand => {
                                 return <option>{brand}</option>
@@ -58,25 +58,25 @@ const AddProduct = () => {
 
                 <div className="mx-auto">
                     <h1 className="text-white font-semibold">Product Type</h1>
-                    <input className="p-2 w-72 mt-2 rounded-md" type="text" placeholder="Product Type" name="type" id="" />
+                    <input className="p-2 w-72 mt-2 rounded-md" type="text" required placeholder="Product Type" name="type" id="" />
                 </div>
                 <div className="mx-auto">
                     <h1 className="text-white font-semibold">Price</h1>
-                    <input className="p-2 w-72 mt-2 rounded-md" type="text" placeholder="Price" name="price" id="" />
+                    <input className="p-2 w-72 mt-2 rounded-md" type="text" required placeholder="Price" name="price" id="" />
                 </div>
 
 
                 <div className="mx-auto">
                     <h1 className="text-white font-semibold">Rating</h1>
-                    <input className="p-2 w-72 mt-2 rounded-md" type="text" placeholder="Rating" name="rating" id="" />
+                    <input className="p-2 w-72 mt-2 rounded-md" type="text" required placeholder="Rating" name="rating" id="" />
                 </div>
                 <div className="mx-auto">
                     <h1 className="text-white font-semibold">Short Description</h1>
-                    <textarea name="description" id="" cols="37" rows="3"></textarea>
+                    <textarea name="description" aria-required id="" cols="37" rows="3"></textarea>
                 </div>
                 <div className="mx-auto">
                     <h1 className="text-white font-semibold">Photo URL</h1>
-                    <input className="p-2 w-72 mt-2 rounded-md" type="text" placeholder="Photo URL" name="photo" id="" />
+                    <input className="p-2 w-72 mt-2 rounded-md" type="text" required placeholder="Photo URL" name="photo" id="" />
                 </div>
                 <input type="submit"  value="Add Product" className="btn btn-block bg-white text-blue-500 text-sm font-bold mt-3" />
 
