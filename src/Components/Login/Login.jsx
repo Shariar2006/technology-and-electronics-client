@@ -64,8 +64,8 @@ const Login = () => {
                             <p>Don't have an account? <Link to='/register' className="text-blue-600 font-bold underline">Register</Link></p>
                             <div className="text-center">
                                 <p>or</p>
-                                <button className="btn ">
-                                    <img onClick={googleLogin} className="h-10 pt-2  text-center" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c51f.png" alt="" />
+                                <button onClick={googleLogin} className="btn ">
+                                    Continue with Google
                                  </button>
 
                             </div>

@@ -55,11 +55,11 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user ? <>
-                            <p>{user.displayName}</p>
+                        user ? <div className="flex items-center gap-2">
+                            <p className="text-xl font-bold">{user.displayName}</p>
                             <img className="rounded-full" src={user.photoURL} alt="" />
                             <a onClick={handleLogout} href="" className="btn">Log Out</a>
-                        </> :
+                        </div> :
                             <ul>
                                 <li className="text-xl font-bold"><NavLink to={'/login'}
                                     className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-blue-500 underline rounded-lg px-1 py-2 " : "mx-2"}

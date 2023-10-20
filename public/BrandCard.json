@@ -1,31 +1,31 @@
 [
     {
-        "id":"apple",
+        "brand":"apple",
         "brand_name": "Apple",
         "brand_img" : "https://i.ibb.co/2NvrZJ6/16.png" 
     },
     {
-        "id": "samsung",
+        "brand": "samsung",
         "brand_name": "Samsung",
         "brand_img" : "https://images.samsung.com/is/image/samsung/assets/in/about-us/brand/logo/mo/360_197_1.png?$FB_TYPE_B_PNG$" 
     },
     {
-        "id": "sony",
+        "brand": "sony",
         "brand_name": "Sony",
         "brand_img" : "https://cdn.freebiesupply.com/logos/thumbs/2x/sony-logo.png" 
     },
     {
-        "id": "intel",
+        "brand": "intel",
         "brand_name": "Intel",
         "brand_img" : "https://i.ibb.co/GJpD9Z3/58568d224f6ae202fedf2720-3.png" 
     },
     {
-        "id": "google",
+        "brand": "google",
         "brand_name": "Google",
         "brand_img" : "https://1000logos.net/wp-content/uploads/2021/05/Google-logo.png" 
     },
     {
-        "id": "vivo",
+        "brand": "vivo",
         "brand_name": "Vivo",
         "brand_img" : "https://1000logos.net/wp-content/uploads/2022/02/Vivo-Logo.jpg" 
     }

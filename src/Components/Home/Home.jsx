@@ -5,7 +5,6 @@ const Home = () => {
     const brandsCards = useLoaderData()
     return (
         <div>
-            <h1>{brandsCards.length}</h1>
             <div className="hero min-h-[80vh]" style={{ backgroundImage: 'url(https://infowebtechzone.com/wp-content/uploads/2019/07/Gadgets.jpeg)', backgroundSize: 'cover', }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
@@ -19,7 +18,7 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 mt-6">
             {
-                brandsCards?.map(brandCards=><BrandCard key={brandCards.id} brandCards={brandCards}></BrandCard>)
+                brandsCards?.map(brandCards=><BrandCard key={brandCards.brand} brandCards={brandCards}></BrandCard>)
             }
             </div>
             

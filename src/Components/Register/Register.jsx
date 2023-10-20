@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, handleUpdateProfile } = useContext(AuthContext)
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -17,7 +17,7 @@ const Register = () => {
         createUser(email, password)
             .then((result) => {
                 console.log(result.user)
-
+                handleUpdateProfile(displayName, photoURL)
 
             })
             .catch((error) => {
@@ -59,7 +59,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text" name="photo" placeholder="photo url" className="input input-bordered" required />
+                                <input type="url" name="photo" placeholder="photo url" className="input input-bordered" required />
 
                             </div>
                             <div className="form-control mt-6">

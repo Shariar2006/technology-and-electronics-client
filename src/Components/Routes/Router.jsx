@@ -10,37 +10,38 @@ import Product from "../Product/Product";
 
 const Router = createBrowserRouter([
     {
-      path: "/",
-      element: <App></App>,
-      children:[
-        {
-            path: "/",
-            element: <Home></Home>,
-            loader: () => fetch('BrandCard.json')
-        },
-        {
-            path: "/login",
-            element: <Login></Login>
-        },
-        {
-            path: "/register",
-            element: <Register></Register>
-        },
-        {
-            path: "/addProduct",
-            element: <AddProduct></AddProduct>
-        },
-        {
-            path: "/myCard",
-            element: <MyCard></MyCard>
-        },
-        {
-            path: "/products/:brand",
-            element: <Product></Product>
-        },
-        
-      ]
+        path: "/",
+        element: <App></App>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>,
+                loader: () => fetch('/BrandCard.json')
+            },
+            {
+                path: "/login",
+                element: <Login></Login>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
+            },
+            {
+                path: "/addProduct",
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: "/myCard",
+                element: <MyCard></MyCard>
+            },
+            {
+                path: "/products/:brand",
+                element: <Product></Product>,
+                loader: () => fetch('http://localhost:5000/brand')
+            },
+
+        ]
     },
-  ]);
+]);
 
 export default Router;
