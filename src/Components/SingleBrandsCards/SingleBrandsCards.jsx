@@ -14,17 +14,17 @@ const SingleBrandsCards = () => {
     },[_id, singleCard])
 
 
-    const addToBooked = () => {
+    const addToCard = () => {
 
         const addCard = []
 
-        const cardItem = JSON.parse(localStorage.getItem('booked'))
+        const cardItem = JSON.parse(localStorage.getItem('addCard'))
 
 
         if (!cardItem) {
             addCard.push(brandCard)
-            localStorage.setItem('booked', JSON.stringify(addCard))
-            swal("Good job!", "You have successfully booked!", "success")
+            localStorage.setItem('addCard', JSON.stringify(addCard))
+            swal("Good job!", "You have successfully added card!", "success")
             
         }
         else {
@@ -33,12 +33,12 @@ const SingleBrandsCards = () => {
 
 
             if (isExist) {
-                swal("Sorry!", "You have already booked!", "error")
+                swal("Sorry!", "You have already added card!", "error")
             }
             else {
                 addCard.push(...cardItem, brandCard)
-                localStorage.setItem('booked', JSON.stringify(addCard))
-                swal("Good job!", "You have successfully booked!", "success")
+                localStorage.setItem('addCard', JSON.stringify(addCard))
+                swal("Good job!", "You have successfully added card!", "success")
                 
             }
 
@@ -59,7 +59,7 @@ const SingleBrandsCards = () => {
                     <p className="lg:text-lg text-gray-600 font5">{brandCard?.description}</p>
                    
                     <div className="card-actions">
-                        <button  className="btn bg-blue-500 text-white hover:bg-blue-700 w-full font4">Add to My Card</button>
+                        <button onClick={addToCard} className="btn bg-blue-500 text-white hover:bg-blue-700 w-full font4">Add to My Card</button>
                     </div>
                 </div>
             </div>
