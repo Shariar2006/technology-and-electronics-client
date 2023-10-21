@@ -5,15 +5,20 @@ import swal from "sweetalert";
 
 
 const SingleBrandsCards = () => {
+
     const [brandCard, setBrandCard] = useState()
     const {_id} = useParams()
     const singleCard = useLoaderData()
 
+
+
+console.log(brandCard)
     useEffect(()=>{
         const findCard= singleCard?.find(singleCard=> singleCard._id ==_id)
         setBrandCard(findCard)
     },[_id, singleCard])
 
+    const {  name, brand, type, photo, price, rating, description } = brandCard || {}
 
     const addToCard = () => {
         fetch('http://localhost:5000/myCard', {
@@ -21,7 +26,7 @@ const SingleBrandsCards = () => {
             headers:{
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(brandCard)
+            body: JSON.stringify({ name, brand, type, photo, price, rating, description})
         })
         .then(res=>res.json())
         .then(data=>{
@@ -33,7 +38,7 @@ const SingleBrandsCards = () => {
         })
     }
 
-        // const { price, rating,  } = brandData || {}
+      
 
 
     return (

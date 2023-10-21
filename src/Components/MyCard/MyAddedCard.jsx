@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { FcRating } from "react-icons/fc";
 import { MdDeleteForever } from "react-icons/md";
 import swal from "sweetalert";
 
 
-const MyAddedCard = ({ brandCard }) => {
+const MyAddedCard = ({ brandCard, cardDelete, setCardDelete }) => {
     const { _id, name, brand, type, photo, price, rating, description } = brandCard || {}
 
     const handleDelete = _id => {
@@ -20,17 +21,19 @@ const MyAddedCard = ({ brandCard }) => {
 
                 if (willDelete) {
                     console.log('delete')
-                    
-                    fetch(`http://localhost:5000/myCard/${_id}`,{
+
+                    fetch(`http://localhost:5000/myCard/${_id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
-                        .then(data=>{
+                        .then(data => {
                             console.log(data)
-                            if(data.deletedCount>0){
+                            if (data.deletedCount > 0) {
                                 swal("Poof! Your imaginary card has been deleted!", {
                                     icon: "success",
                                 })
+                                const remaining = cardDelete?.filter(cardDelete => cardDelete._id == _id)
+                                setCardDelete(remaining)
                             }
                         })
                 } else {
