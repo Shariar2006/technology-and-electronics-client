@@ -5,7 +5,7 @@ import swal from "sweetalert";
 
 const Register = () => {
 
-    const { createUser, handleUpdateProfile, loading } = useContext(AuthContext)
+    const { createUser, handleUpdateProfile, logout } = useContext(AuthContext)
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -34,7 +34,7 @@ const Register = () => {
                 swal("Good job!", "You are successfully Registration!", "success");
                 <Navigate to='/login'></Navigate>
                 handleUpdateProfile(displayName, photoURL)
-                
+                logout()
 
             })
             .catch((error) => {
@@ -45,7 +45,7 @@ const Register = () => {
 
     return (
         <div>
-            {loading && <p>Loading</p>}
+            
             
             <div className="hero min-h-[80vh] bg-base-200">
                 <div className="">

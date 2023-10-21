@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import BrandCard from "./BrandCard";
 import Marquee from "react-fast-marquee";
+import TimeLine from "./TimeLine";
 
 
 const Home = () => {
@@ -73,7 +74,7 @@ const Home = () => {
                     
                 </Marquee>
             </div>
-
+                <TimeLine></TimeLine>
         </div>
     );
 };
