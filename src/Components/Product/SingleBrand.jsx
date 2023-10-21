@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 const SingleBrand = ({ brandData }) => {
-    const {_id, name, brand, type, photo, price, rating, description } = brandData || {}
+    const { _id, name, brand, type, photo, price, rating, description } = brandData || {}
     return (
         <div>
 
@@ -42,7 +42,13 @@ const SingleBrand = ({ brandData }) => {
                                 <p className="flex items-center"><FcRating></FcRating>{rating}</p>
                             </div>
                             <div className="">
-                                <button className="btn bg-blue-500 text-white w-full">Update</button>
+                                <button
+                                    className="w-full select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    type="button"
+                                    data-ripple-light="true"
+                                >
+                                    <Link to={`/updateCard/${_id}`} className='font5'>Update</Link>
+                                </button>
                             </div>
                         </div>
                     </div>

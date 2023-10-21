@@ -7,6 +7,8 @@ import AddProduct from "../AddProduct/AddProduct";
 import MyCard from "../MyCard/MyCard";
 import Product from "../Product/Product";
 import SingleBrandsCards from "../SingleBrandsCards/SingleBrandsCards";
+import UpdateCard from "../Update/UpdateCard";
+import PrivateRoute from "../Private/PrivateRoute";
 
 
 const Router = createBrowserRouter([
@@ -29,11 +31,12 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/addProduct",
-                element: <AddProduct></AddProduct>
+                element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
             },
             {
                 path: "/myCard",
-                element: <MyCard></MyCard>
+                element: <PrivateRoute><MyCard></MyCard></PrivateRoute>,
+                loader: ()=> fetch('http://localhost:5000/myCard')
             },
             {
                 path: "/products/:brand",
@@ -42,9 +45,18 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/singleBrandsCards/:_id",
-                element: <SingleBrandsCards></SingleBrandsCards>,
+                element: <PrivateRoute><SingleBrandsCards></SingleBrandsCards></PrivateRoute>,
                 loader: () => fetch('http://localhost:5000/brand')
             },
+            {
+                path: "/updateCard/:id",
+                element: <PrivateRoute><UpdateCard></UpdateCard></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/updateCard/${params.id}`)
+            },
+            {
+                path: '*',
+                element: <div><img src="https://media.licdn.com/dms/image/C5112AQEw1fXuabCTyQ/article-inline_image-shrink_1500_2232/0/1581099611064?e=1701907200&v=beta&t=Lg5fpA1ixZPHlGbh8EATdeIQjh6CN25qdOyIpRvuRIU" alt="" /></div>
+            }
 
         ]
     },

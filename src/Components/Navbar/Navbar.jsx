@@ -1,8 +1,10 @@
-import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
+
+    
 
     const { user, logout } = useContext(AuthContext)
     const handleLogout = () => {
@@ -46,6 +48,7 @@ const Navbar = () => {
                     <div className="flex items-center text-xl font-bold">
                         <img className="hidden lg:block" src="https://i.ibb.co/5YFTJBz/1.png" alt="" />
                         <p> Tech <span className="text-blue-500">and</span> Elec</p>
+                        
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">

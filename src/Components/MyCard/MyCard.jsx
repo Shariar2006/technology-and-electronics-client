@@ -1,25 +1,17 @@
-import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import MyAddedCard from "./MyAddedCard";
 
 const MyCard = () => {
-    const [card, setcard] = useState([])
 
-    const [noFound, setNoFound] = useState(false)
+    const myCard = useLoaderData()
+    
 
-    useEffect(() => {
-        const cardItem = JSON.parse(localStorage.getItem('addCard'))
-
-        if (cardItem) {
-            setcard(cardItem)
-        }
-        else {
-            setNoFound("You did not card!")
-        }})
+    console.log(myCard)
+        
     return (
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-5">
             {
-                noFound ? <p className='h-[80vh] flex justify-center items-center text-2xl font-bold'>{noFound}</p>:
-                <p>{card?.length}</p>
-
+                myCard?.map(brandData=><MyAddedCard key={brandData._id} brandCard={brandData}></MyAddedCard>)
             }
         </div>
     );

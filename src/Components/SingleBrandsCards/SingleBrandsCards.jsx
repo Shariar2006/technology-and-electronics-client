@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FcRating } from "react-icons/fc";
 import { useLoaderData, useParams } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -15,37 +16,24 @@ const SingleBrandsCards = () => {
 
 
     const addToCard = () => {
-
-        const addCard = []
-
-        const cardItem = JSON.parse(localStorage.getItem('addCard'))
-
-
-        if (!cardItem) {
-            addCard.push(brandCard)
-            localStorage.setItem('addCard', JSON.stringify(addCard))
-            swal("Good job!", "You have successfully added card!", "success")
-            
-        }
-        else {
-
-            const isExist = cardItem?.find(singleCard => singleCard._id === brandCard._id)
-
-
-            if (isExist) {
-                swal("Sorry!", "You have already added card!", "error")
-            }
-            else {
-                addCard.push(...cardItem, brandCard)
-                localStorage.setItem('addCard', JSON.stringify(addCard))
-                swal("Good job!", "You have successfully added card!", "success")
+        fetch('http://localhost:5000/myCard', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(brandCard)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.insertedId){
+                swal("Good job!", "You product added successfully!", "success");
                 
             }
-
-
-        }
-
+        })
     }
+
+        // const { price, rating,  } = brandData || {}
 
 
     return (
@@ -54,10 +42,15 @@ const SingleBrandsCards = () => {
             <div className="card w-3/4 mx-auto  bg-base-100 shadow-xl">
                 <figure><img className="w-full h-[30vh] md:h-[60vh] lg:h-screen" src={brandCard?.photo} alt={brandCard?.name} /></figure>
                 <div className="card-body">
-                    <h2 className="card-title text-2xl lg:text-3xl font-bold font">{brandCard?.EventType}</h2>
-                    <h4 className="text-lg lg:text-xl font-semibold font4">{brandCard?.name}</h4>
-                    <p className="lg:text-lg text-gray-600 font5">{brandCard?.description}</p>
+                    <h2 className="card-title text-2xl lg:text-3xl font-bold font">{brandCard?.type}</h2>
+                    <h4 className="text-base md:text-lg lg:text-xl font-semibold ">{brandCard?.name}</h4>
+                     <p className="lg:text-lg text-gray-600 font5">{brandCard?.description}</p>
+                   <div className="grid grid-cols-1 md:grid-cols-3 ">
+                   <h4 className="text-base md:text-lg lg:text-xl font-semibold ">Brand: {brandCard?.brand}</h4>
+                    <h4 className="text-base md:text-lg lg:text-xl font-semibold ">Price: {brandCard?.price}</h4>
+                    <h4 className="text-base md:text-lg lg:text-xl font-semibold flex items-center"><FcRating></FcRating>{brandCard?.rating}</h4>
                    
+                   </div>
                     <div className="card-actions">
                         <button onClick={addToCard} className="btn bg-blue-500 text-white hover:bg-blue-700 w-full font4">Add to My Card</button>
                     </div>

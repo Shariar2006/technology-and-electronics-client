@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const Register = () => {
 
-    const { createUser, handleUpdateProfile } = useContext(AuthContext)
+    const { createUser, handleUpdateProfile, loading } = useContext(AuthContext)
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -14,10 +15,26 @@ const Register = () => {
         const password = form.get('password')
         const photoURL = form.get('photo')
         console.log(email, displayName, password, photoURL)
+        if (password.length < 6) {
+            swal("Sorry!", "Your password must be at least 6 characters!", "error");
+             return;
+         }
+         else if(!/(?=.*[A-Z])/.test(password)){
+             swal("Sorry!", "Your password must be at least one uppercase characters!", "error");
+             return
+         }
+         else if(!/(?=.*[!@#$%^&*])/.test(password)){
+             swal("Sorry!", "Your password must be at least one special character!", "error");
+             return
+         }
         createUser(email, password)
             .then((result) => {
                 console.log(result.user)
+                e.target.reset()
+                swal("Good job!", "You are successfully Registration!", "success");
+                <Navigate to='/login'></Navigate>
                 handleUpdateProfile(displayName, photoURL)
+                
 
             })
             .catch((error) => {
@@ -28,6 +45,7 @@ const Register = () => {
 
     return (
         <div>
+            {loading && <p>Loading</p>}
             
             <div className="hero min-h-[80vh] bg-base-200">
                 <div className="">

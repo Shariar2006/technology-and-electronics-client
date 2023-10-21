@@ -1,12 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const Login = () => {
 
     const { userLogin, user, singWithGoogle } = useContext(AuthContext)
     console.log(user)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -14,9 +17,17 @@ const Login = () => {
         const email = e.target.email.value
         const password = e.target.password.value
         console.log(displayName, email, password)
+        // if(!user){
+        //     swal("Sorry!", "Please do registration first!", "error");
+        //     return;
+        // }
         userLogin(email, password)
             .then((result) => {
                 console.log(result.user)
+                e.target.reset()
+                swal("Good job!", "You are successfully logged in!", "success");
+                navigate(location?.state ? location.state: '/')
+
             })
             .catch(error => {
                 console.log(error)
@@ -24,7 +35,10 @@ const Login = () => {
     }
     const googleLogin = () => {
         singWithGoogle()
-            .then((result) => { console.log(result.user) })
+            .then(() => { 
+
+                swal("Good job!", "You are successfully logged in!", "success");
+                navigate(location?.state ? location.state: '/')            })
             .catch(error => { console.log(error) })
     }
 
