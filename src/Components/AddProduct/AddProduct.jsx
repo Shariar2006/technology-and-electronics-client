@@ -16,7 +16,7 @@ const AddProduct = () => {
         const description= form.description.value;
         const newProduct = {name, brand, type, photo, price, rating, description}
         console.log(newProduct)
-        fetch('http://localhost:5000/brand', {
+        fetch('https://technology-and-electronics-server-jet.vercel.app/brand', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

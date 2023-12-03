@@ -36,22 +36,22 @@ const Router = createBrowserRouter([
             {
                 path: "/myCard",
                 element: <PrivateRoute><MyCard></MyCard></PrivateRoute>,
-                loader: ()=> fetch('http://localhost:5000/myCard')
+                loader: ()=> fetch('https://technology-and-electronics-server-jet.vercel.app/myCard')
             },
             {
                 path: "/products/:brand",
                 element: <Product></Product>,
-                loader: () => fetch('http://localhost:5000/brand')
+                loader: () => fetch('https://technology-and-electronics-server-jet.vercel.app/brand')
             },
             {
                 path: "/singleBrandsCards/:_id",
                 element: <PrivateRoute><SingleBrandsCards></SingleBrandsCards></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/brand')
+                loader: () => fetch('https://technology-and-electronics-server-jet.vercel.app/brand')
             },
             {
                 path: "/updateCard/:id",
                 element: <PrivateRoute><UpdateCard></UpdateCard></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/updateCard/${params.id}`)
+                loader: ({params}) => fetch(`https://technology-and-electronics-server-jet.vercel.app/updateCard/${params.id}`)
             },
             {
                 path: '*',

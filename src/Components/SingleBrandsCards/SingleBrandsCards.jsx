@@ -21,7 +21,7 @@ console.log(brandCard)
     const {  name, brand, type, photo, price, rating, description } = brandCard || {}
 
     const addToCard = () => {
-        fetch('http://localhost:5000/myCard', {
+        fetch('https://technology-and-electronics-server-jet.vercel.app/myCard', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

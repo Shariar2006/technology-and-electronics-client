@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { FcRating } from "react-icons/fc";
 import { MdDeleteForever } from "react-icons/md";
 import swal from "sweetalert";
+import { AuthContext } from "../Context/AuthProvider";
+import { useState } from "react";
 
 
 const MyAddedCard = ({ brandCard, cardDelete, setCardDelete }) => {
+    const { loading } = useContext(AuthContext)
+    const [loader, setLoader] = useState(loading)
     const { _id, name, brand, type, photo, price, rating, description } = brandCard || {}
 
     const handleDelete = _id => {
@@ -22,7 +27,7 @@ const MyAddedCard = ({ brandCard, cardDelete, setCardDelete }) => {
                 if (willDelete) {
                     console.log('delete')
 
-                    fetch(`http://localhost:5000/myCard/${_id}`, {
+                    fetch(`https://technology-and-electronics-server-jet.vercel.app/myCard/${_id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -32,6 +37,7 @@ const MyAddedCard = ({ brandCard, cardDelete, setCardDelete }) => {
                                 swal("Poof! Your imaginary card has been deleted!", {
                                     icon: "success",
                                 })
+                                setLoader(loader)
                                 const remaining = cardDelete?.filter(cardDelete => cardDelete._id == _id)
                                 setCardDelete(remaining)
                             }

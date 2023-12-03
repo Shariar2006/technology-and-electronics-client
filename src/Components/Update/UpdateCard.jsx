@@ -22,7 +22,7 @@ const UpdateCard = () => {
         const description= form.description.value;
         const updateProduct = {name, brand, type, photo, price, rating, description}
         console.log(updateProduct)
-        fetch(`http://localhost:5000/updateCard/${_id}`, {
+        fetch(`https://technology-and-electronics-server-jet.vercel.app/updateCard/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
